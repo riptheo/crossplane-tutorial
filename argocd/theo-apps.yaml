@@ -1,0 +1,22 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: theo-test
+  namespace: argo-cd 
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:riptheo/crossplane.git
+    targetRevision: HEAD
+    path: theo-test
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: theo-test
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+      allowEmpty: true
