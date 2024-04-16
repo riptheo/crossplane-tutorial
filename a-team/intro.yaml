@@ -16,3 +16,5 @@ spec:
       - name: ID
         type: S
     hashKey: ID
+  forProvider:
+    policy: policy-test-theo1
